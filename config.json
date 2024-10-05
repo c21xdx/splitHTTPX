@@ -1,0 +1,40 @@
+{
+    "log": {
+      "loglevel": "warning"
+    },
+    "inbounds": [
+      {
+        "listen": "127.0.0.1",
+        "port": 8080,
+        "protocol": "vless",
+        "settings": {
+          "clients": [
+            {
+              "id": "0cf85927-2c71-4e87-9df3-b1eb7d5a9e1b"
+            }
+          ],
+          "decryption": "none"
+        },
+        "streamSettings": {
+          "network": "splithttp",
+          "splithttpSettings": {
+            "path": "/splitx"
+          }
+        },
+        "sniffing": {
+          "enabled": true,
+          "destOverride": [
+            "http",
+            "tls",
+            "quic"
+          ]
+        }
+      }
+    ],
+    "outbounds": [
+      {
+        "protocol": "freedom",
+        "tag": "direct"
+      }
+    ]
+  }
