@@ -1,0 +1,23 @@
+FROM caddy:2.8.4-alpine
+
+ENV CADDY_PORT 80
+ENV PASSID e7d5d38c-e518-42d6-a46f-c14a3f324c69
+
+USER root
+
+COPY config.json run.sh /etc/
+
+RUN apk upgrade --update \
+    && apk add \
+        bash \
+        curl \
+    # Install app
+    && mkdir /app \
+    && curl -L -H "Cache-Control: no-cache" -o /app/xray.zip https://github.com/XTLS/Xray-core/releases/download/v24.9.30/Xray-linux-64.zip \
+    && unzip /app/xray.zip -d /app/ && mv /etc/config.json /app/ && chmod +x /app/* \
+    # clear
+    && apk del curl && rm -rf /var/cache/apk/* /app/xray.zip
+    
+EXPOSE $CADDY_PORT
+    
+CMD sh /etc/run.sh
