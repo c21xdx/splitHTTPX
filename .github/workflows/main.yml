@@ -1,4 +1,4 @@
-name: Publish Docker amd64-old
+name: Publish Docker amd64-simple
 on:  workflow_dispatch
 jobs:
   build:
@@ -11,4 +11,4 @@ jobs:
         name: c21xdx/splithttpx
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        tags: "old"
+        tags: "simple"
