@@ -23,9 +23,9 @@
 			"decryption": "none"
 		},
 		"streamSettings": {
-			"network": "splithttp",
-			"splithttpSettings": {
-				"path": "/splitx"
+			"network": "xhttp",
+			"xhttpSettings": {
+				"path": "/xapi"
 			}
 		},
 		"sniffing": {
